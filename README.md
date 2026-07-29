@@ -1,0 +1,73 @@
+# PIR Motion Detection System
+
+## Project Overview
+This project is a Motion Detection System developed using an Arduino Uno and a PIR (Passive Infrared) Sensor. The system detects human movement and automatically turns ON an LED when motion is detected. The motion status is also displayed on the Serial Monitor.
+
+## Components Used
+- Arduino Uno
+- PIR Motion Sensor
+- LED
+- 220Ω Resistor
+- Breadboard
+- Jumper Wires
+- USB Cable
+
+## Circuit Connections
+
+| Component | Arduino Pin |
+|-----------|-------------|
+| PIR VCC | 5V |
+| PIR GND | GND |
+| PIR OUT | D2 |
+| LED Anode (+) | D13 |
+| LED Cathode (-) | GND (through 220Ω resistor) |
+
+## Arduino Code
+
+```cpp
+const int PIR = 2;
+const int LED = 13;
+
+void setup() {
+  pinMode(PIR, INPUT);
+  pinMode(LED, OUTPUT);
+
+  digitalWrite(LED, LOW);
+  Serial.begin(9600);
+}
+
+void loop() {
+  int state = digitalRead(PIR);
+
+  if (state == HIGH) {
+    digitalWrite(LED, HIGH);
+    Serial.println("Motion Detected");
+  } else {
+    digitalWrite(LED, LOW);
+    Serial.println("No Motion");
+  }
+
+  delay(500);
+}
+```
+
+## Working Principle
+The PIR sensor detects changes in infrared radiation produced by the human body. When a person moves in front of the sensor, the PIR sensor outputs a HIGH signal to the Arduino. The Arduino processes this signal, turns ON the LED, and displays "Motion Detected" on the Serial Monitor. When no motion is detected, the LED remains OFF and "No Motion" is displayed.
+
+## Applications
+- Home Security Systems
+- Smart Lighting
+- Automatic Door Systems
+- Office Security
+- Intruder Detection
+- Energy Saving Systems
+- Smart Home Automation
+
+## Output
+- No Motion → LED OFF
+- Motion Detected → LED ON
+
+## Developed By
+**Aman Kumar**  
+B.Tech (ECE)  
+Ganga Institute of Technology and Management
